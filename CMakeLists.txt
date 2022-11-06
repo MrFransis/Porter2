@@ -29,16 +29,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 #
-# OPTIONS
-#
-option(Porter2_ENABLE_TESTING "Enable testing of the library." ON)
-
-#
-# DEPENDENCIES
-#
-add_subdirectory(external)
-
-#
 # ADD LIBRARY
 #
 add_library(${Porter2_TARGET_NAME}
@@ -47,12 +37,6 @@ target_include_directories(${Porter2_TARGET_NAME} PUBLIC
     $<BUILD_INTERFACE:${Porter2_INCLUDE_BUILD_DIR}>
     $<INSTALL_INTERFACE:${Porter2_INCLUDE_INSTALL_DIR}>
 )
-
-include(CTest)
-if (Porter2_ENABLE_TESTING AND BUILD_TESTING)
-    enable_testing()
-    add_subdirectory(test)
-endif()
 
 #
 # INSTALL install header files, generate and install cmake config files for
